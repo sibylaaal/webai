@@ -20,11 +20,12 @@ export default function Hero(){
         <h1 className="text-white dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">
         Web.AI         <span className="text-white dark:text-white"> Your Gateway to Digital Innovation .</span>
         </h1>
-        <p className="mt-8 text-gray-700 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio incidunt
-          nam itaque sed eius modi error totam sit illum. Voluptas doloribus
-          asperiores quaerat aperiam. Quidem harum omnis beatae ipsum soluta!
-        </p>
+       
+       <div className="flex justify-center align-center m-5">
+        <video width="640" height="360" controls>
+    <source src="/vd.mp4" type="video/mp4"/>
+    Your browser does not support the video tag.
+  </video></div>
         <div className="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
           <a
             href="#"
