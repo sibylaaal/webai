@@ -72,7 +72,7 @@ export default function Featured(){
           </div>
         <span className="pt-4 grid grid-cols-6 gap-4">
           <span className="col-start-1 col-end-3 font-bold text-lg text-white uppercase font-mono">
-            Lravel s' Api
+            Lravel  Apis
           </span>
           <span className="col-end-7 col-span-2 text-sm text-slate-500 uppercase font-mono flex justify-end">
             <span className="">music video</span>

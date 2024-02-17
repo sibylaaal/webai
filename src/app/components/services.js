@@ -52,7 +52,7 @@ export default function Services(){
         />
       </svg>
       <p className="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">
-        Save time managing advertising &amp; Content for your business.
+        Save time managing advertising  Content for your business.
       </p>
     </header>
     {/* End heading */}
@@ -221,7 +221,7 @@ export default function Services(){
 
           </div>
           <h3 className="text-lg leading-normal mb-2 font-semibold text-black">
-          Android  &amp; Ios
+          Android   Ios
           </h3>
           <p className="text-gray-500 p-3">
            Building Native mobile apps
