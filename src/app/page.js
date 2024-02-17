@@ -24,12 +24,12 @@ export default function Home() {
 <Services/>
 
 
-
-
+{
+/** 
 
 <Contact/>
-
-
+*/
+}
 <Footer/>
 
 
