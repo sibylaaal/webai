@@ -62,7 +62,7 @@ export default function Header(){
                       peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none 
                       dark:shadow-none dark:bg-white dark:border-gray-700"
         >
-          <div className="sm:text-white dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0">
+          <div className="sm:text-white  lg:pr-4 lg:w-auto w-full lg:pt-0">
             <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
               <li>
                 <a
