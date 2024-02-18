@@ -28,7 +28,7 @@ export default function Header(){
               <div className="h-6 w-2 bg-white" />
             </div>
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
-           <img className="h-[70px] w-[70px] " src="/logo.png" />
+           <img className="h-[55px] w-[55px] rounded-xl " src="/logo.png" />
             </span>
           </a>
           <div className="relative flex items-center lg:hidden max-h-10">
