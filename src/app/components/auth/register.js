@@ -7,10 +7,14 @@ import Link from 'next/link';
 import Loader from '../loaders/loader';
 import Spinner from '../loaders/spinner';
 import SuccessAlert from '../alerts/success';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import { Login } from '@/app/utils/redux/slices/AuthSlices';
 
 export default function Register(){
   const { register, watch, formState: { errors } ,handleSubmit ,reset} = useForm();
-
+ const dispatch=useDispatch()
+ const router=useRouter()
   const {PostwithOutjson,Loading,data,error}=usePost()
   const onSubmit = () => {
     const formData = new FormData();
@@ -19,6 +23,9 @@ export default function Register(){
     formData.append("password", event.target.password.value);
     formData.append("file", event.target.file.files[0]);
     PostwithOutjson("register", formData);
+
+    dispatch(Login(data))
+    router.push("/")
   reset()
 };
     return(
