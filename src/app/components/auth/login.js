@@ -13,7 +13,7 @@ import { Login } from "@/app/utils/redux/slices/AuthSlices";
 
 export default function AuthlOG() {
   const { register, watch, formState: { errors }, handleSubmit } = useForm();
-  const { Post, Loading, data, error } = Usepost();
+  const { Post, Loading, data2, error } = Usepost();
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -21,8 +21,9 @@ export default function AuthlOG() {
   const onSubmit=(data)=>{
 
     Post("login",data)
-    dispatch(Login(data))
-     router.push("/")
+    data2?.user?  dispatch(Login(data))&&router.push("/"):null
+   
+     
   }
     return(
         <>
@@ -109,8 +110,8 @@ export default function AuthlOG() {
               
             </button>
             <div className="p-2">
-            {data?.message?<AlertDanger message={"invalid Email or password"}/>:null}
-            {data?.user?<SuccessAlert message={"welcome back"}/>:null}
+            {data2?.message?<AlertDanger message={"invalid Email or password"}/>:null}
+            {data2?.user?<SuccessAlert message={"welcome back"}/>:null}
       </div>
           </form>
           </div>

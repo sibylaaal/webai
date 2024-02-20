@@ -15,7 +15,7 @@ export default function Register(){
   const { register, watch, formState: { errors } ,handleSubmit ,reset} = useForm();
  const dispatch=useDispatch()
  const router=useRouter()
-  const {PostwithOutjson,Loading,data,error}=usePost()
+  const {PostwithOutjson,Loading,data2,error}=usePost()
   const onSubmit = () => {
     const formData = new FormData();
     formData.append("username", event.target.username.value);
@@ -24,8 +24,8 @@ export default function Register(){
     formData.append("file", event.target.file.files[0]);
     PostwithOutjson("register", formData);
 
-    dispatch(Login(data))
-    router.push("/")
+    data2?.user?  dispatch(Login(data))&&router.push("/"):null
+
   reset()
 };
     return(
@@ -149,8 +149,8 @@ type="password"
               
             </button>
             <div className="p-2">
-            {data?.message?<AlertDanger message={"invalid "}/>:null}
-            {data?.user?<SuccessAlert message={"welcome "}/>:null}
+            {data2?.message?<AlertDanger message={"invalid "}/>:null}
+            {data2?.user?<SuccessAlert message={"welcome "}/>:null}
       </div>
             </form>
           

@@ -2,7 +2,7 @@
 import {  useState } from "react";
 
 export default function usePost() {
-    const [data, setData] = useState(null);
+    const [data2, setData] = useState(null);
     const [error, setError] = useState(null);
     const [Loading, setLoading] = useState(false);
 
@@ -52,5 +52,5 @@ export default function usePost() {
         });
     }
 
-    return { data, error, Loading, Post ,PostwithOutjson};
+    return { data2, error, Loading, Post ,PostwithOutjson};
 }
