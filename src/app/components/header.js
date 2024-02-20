@@ -1,7 +1,12 @@
 
+'use client'
 
+import { useSelector } from "react-redux"
+import User from "../../../backend/models/user"
+import Link from "next/link"
 
 export default function Header(){
+ const  isAuthenticated =useSelector((state)=>state.isAuthenticated)
     return(
         <>
         
@@ -91,7 +96,10 @@ export default function Header(){
               </li>
             </ul>
           </div>
-          <div className="mt-12 lg:mt-0">
+          {
+
+            isAuthenticated?
+            (<div className="mt-12 lg:mt-0">
             <a
               href="#"
               className="relative  flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
@@ -100,7 +108,20 @@ export default function Header(){
                 Get Started
               </span>
             </a>
-          </div>
+          </div>)
+            :
+            (<Link               href="/Auth/login"
+            className="mt-12 lg:mt-0">
+            <div
+              className="relative  flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+            >
+              <span className="relative text-sm font-semibold text-black">
+                Sign-in
+              </span>
+            </div>
+          </Link>)
+          }
+          
         </div>
       </div>
     </container>
