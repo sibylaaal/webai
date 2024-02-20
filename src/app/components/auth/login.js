@@ -10,6 +10,7 @@ import SuccessAlert from "../alerts/success";
 import AlertDanger from '../alerts/danger';
 import Link from "next/link";
 import { Login } from "@/app/utils/redux/slices/AuthSlices";
+import { useEffect } from "react";
 
 export default function AuthlOG() {
   const { register, watch, formState: { errors }, handleSubmit } = useForm();
@@ -21,10 +22,10 @@ export default function AuthlOG() {
   const onSubmit=(data)=>{
 
     Post("login",data)
-    data2?.user?  dispatch(Login(data))&&router.push("/"):null
    
      
   }
+ 
     return(
         <>
         

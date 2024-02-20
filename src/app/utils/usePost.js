@@ -1,10 +1,15 @@
 'use client'
+import { useRouter } from "next/navigation";
 import {  useState } from "react";
+import { useDispatch } from "react-redux";
+import { Login } from "./redux/slices/AuthSlices";
 
 export default function usePost() {
     const [data2, setData] = useState(null);
     const [error, setError] = useState(null);
     const [Loading, setLoading] = useState(false);
+    const dispatch=useDispatch()
+    const router=useRouter()
 
     const Post = (endPoint, postData) => {
         setLoading(true);
@@ -19,6 +24,10 @@ export default function usePost() {
         .then(res => {
             setData(res);
             setLoading(false);
+            res.user?  dispatch(Login(res)):null
+
+            res.user?  router.push("/"):null
+
             console.log(res);
         })
         .catch(err => {

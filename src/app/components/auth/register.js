@@ -24,7 +24,6 @@ export default function Register(){
     formData.append("file", event.target.file.files[0]);
     PostwithOutjson("register", formData);
 
-    data2?.user?  dispatch(Login(data))&&router.push("/"):null
 
   reset()
 };
