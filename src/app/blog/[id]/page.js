@@ -100,7 +100,7 @@ export default function Blog(){
       </h2>
     </div>
     <form className="mb-6">
-      <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 bg-gray-800 border-gray-700">
+      <div className="py-2 px-4 mb-4  rounded-lg rounded-t-lg border border-gray-200 bg-gray-800 border-gray-700">
         <label htmlFor="comment" className="sr-only">
           Your comment
         </label>
@@ -120,7 +120,7 @@ export default function Blog(){
         Post comment
       </button>
     </form>
-    <article className="p-6 text-base bg-white rounded-lg bg-gray-900">
+    <article className="p-6 text-base  rounded-lg bg-gray-900">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <p className="inline-flex items-center mr-3 text-sm text-gray-900 text-white font-semibold">
@@ -140,7 +140,7 @@ export default function Blog(){
         <button
           id="dropdownComment1Button"
           data-dropdown-toggle="dropdownComment1"
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-400  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
           type="button"
         >
           <svg
@@ -157,7 +157,7 @@ export default function Blog(){
         {/* Dropdown menu */}
         <div
           id="dropdownComment1"
-          className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
+          className="hidden z-10 w-36  rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
         >
           <ul
             className="py-1 text-sm text-gray-700 text-gray-200"
@@ -220,7 +220,7 @@ export default function Blog(){
         </button>
       </div>
     </article>
-    <article className="p-6 mb-3 ml-6 lg:ml-12 text-base bg-white rounded-lg bg-gray-900">
+    <article className="p-6 mb-3 ml-6 lg:ml-12 text-base  rounded-lg bg-gray-900">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <p className="inline-flex items-center mr-3 text-sm text-gray-900 text-white font-semibold">
@@ -240,7 +240,7 @@ export default function Blog(){
         <button
           id="dropdownComment2Button"
           data-dropdown-toggle="dropdownComment2"
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
           type="button"
         >
           <svg
@@ -257,7 +257,7 @@ export default function Blog(){
         {/* Dropdown menu */}
         <div
           id="dropdownComment2"
-          className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
+          className="hidden z-10 w-36  rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
         >
           <ul
             className="py-1 text-sm text-gray-700 text-gray-200"
@@ -317,7 +317,7 @@ export default function Blog(){
         </button>
       </div>
     </article>
-    <article className="p-6 mb-3 text-base bg-white border-t border-gray-200 border-gray-700 bg-gray-900">
+    <article className="p-6 mb-3 text-base  border-t border-gray-200 border-gray-700 bg-gray-900">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <p className="inline-flex items-center mr-3 text-sm text-gray-900 text-white font-semibold">
@@ -337,7 +337,7 @@ export default function Blog(){
         <button
           id="dropdownComment3Button"
           data-dropdown-toggle="dropdownComment3"
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
           type="button"
         >
           <svg
@@ -354,7 +354,7 @@ export default function Blog(){
         {/* Dropdown menu */}
         <div
           id="dropdownComment3"
-          className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
+          className="hidden z-10 w-36  rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
         >
           <ul
             className="py-1 text-sm text-gray-700 text-gray-200"
@@ -415,7 +415,7 @@ export default function Blog(){
         </button>
       </div>
     </article>
-    <article className="p-6 text-base bg-white border-t border-gray-200 border-gray-700 bg-gray-900">
+    <article className="p-6 text-base  border-t border-gray-200 border-gray-700 bg-gray-900">
       <footer className="flex justify-between items-center mb-2">
         <div className="flex items-center">
           <p className="inline-flex items-center mr-3 text-sm text-gray-900 text-white font-semibold">
@@ -435,7 +435,7 @@ export default function Blog(){
         <button
           id="dropdownComment4Button"
           data-dropdown-toggle="dropdownComment4"
-          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
+          className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 text-gray-40  rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 bg-gray-900 hover:bg-gray-700 focus:ring-gray-600"
           type="button"
         >
           <svg
@@ -451,7 +451,7 @@ export default function Blog(){
         {/* Dropdown menu */}
         <div
           id="dropdownComment4"
-          className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
+          className="hidden z-10 w-36  rounded divide-y divide-gray-100 shadow bg-gray-700 divide-gray-600"
         >
           <ul
             className="py-1 text-sm text-gray-700 text-gray-200"
