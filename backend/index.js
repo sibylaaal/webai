@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const multer = require('multer');
 const User = require('./models/user');
+const Post = require('./models/posts');
+const Category = require('./models/category');
 
 const app = express();
 app.use(cors());
@@ -86,6 +88,47 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ message: 'Error logging in' });
     }
   });
+  app.get("/blogs",async (req, res) => {
+    const blogs = await Post.find();
+    res.status(200).json(blogs);
+});
+app.post("/blogs",upload.single('file'), async (req, res) => {
+
+  const filePath = req.file.path;
+  const {userId , CategoryId, content,title } = req.body;
+
+  const blogs = new Post({
+     title,
+     content,
+     userId,
+     CategoryId,
+     Image:filePath
+
+  });
+  res.status(200).json(blogs);
+});
+
+
+
+app.post("/category", async (req, res) => {
+  const { title } = req.body;
+
+  try {
+    const newCategory = new Category({ title });
+    const savedCategory = await newCategory.save();
+    res.status(201).json(savedCategory);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+app.get("/categories", async (req, res) => {
+  const categories = await Category.find();
+  res.status(200).json(categories);
+});
+
+
   
 
 app.listen(PORT, () => {

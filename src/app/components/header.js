@@ -10,7 +10,12 @@ export default function Header(){
     return(
         <>
         
-        
+        <div className=" bg-white flex justify-center">
+          <span className="p-1 font-bold">
+            Warning The web site is not completed yet ⚠️
+          </span>
+ 
+        </div>
         <header>
   <nav className="z-10 p-2 w-full absolute">
     <container>
@@ -28,10 +33,7 @@ export default function Header(){
             aria-label="logo"
             className="flex space-x-2 items-center"
           >
-            <div aria-hidden="true" className="flex space-x-1">
-              <div className="h-4 w-4 rounded-full bg-white dark:bg-white" />
-              <div className="h-6 w-2 bg-white" />
-            </div>
+           
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
            <img className="h-[55px] w-[55px] rounded-xl " src="/logo.png" />
             </span>
@@ -87,12 +89,12 @@ export default function Header(){
                 </a>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/blog"
                   className="block sm:text-white  md:px-4 transition "
                 >
-                  <span>Contact</span>
-                </a>
+                  <span>Blogs</span>
+                </Link>
               </li>
             </ul>
           </div>

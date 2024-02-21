@@ -22,7 +22,7 @@ export default function Hero(){
         </h1>
        
        <div className="flex justify-center align-center m-5">
-        <video width="640" height="360" controls>
+        <video className="rounded-xl" width="640" height="360" controls>
     <source src="/vd.mp4" type="video/mp4"/>
     Your browser does not support the video tag.
   </video></div>
