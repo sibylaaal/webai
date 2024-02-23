@@ -116,8 +116,8 @@ xmlns="http://www.w3.org/2000/svg"
 </div>
 <div className="max-w-6xl mx-auto p-10  sm:px-6 h-full">
 
-{Datafetched&&Datafetched.map((el)=>(
- <Link href={`/blog/${1}`} className="max-w-sm  py-10 mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+{Datafetched&&Datafetched.map((el,index)=>(
+ <Link key={index} href={`/blog/${1}`} className="max-w-sm  py-10 mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
 <a className="relative block group" href="#0">
  <div
    className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none"
