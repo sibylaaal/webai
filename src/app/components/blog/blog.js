@@ -1,16 +1,42 @@
+
+'use client'
+import { UseFetch } from "@/app/utils/useFetch";
 import Link from "next/link";
+import Loader from "../loaders/loader";
+import { useEffect, useState } from "react";
+import Empty from "../loaders/empty";
 
 
 
 export default function Blogcompo(){
+  const [Page,SetPage]=useState(1)
+  const [Datafetched,setData]=useState([])
+  const {Data,Loading,Error}=UseFetch(`blogs?page=${Page}`)
+useEffect(()=>{setData(Data)},[Data])
+
+const Search = (Filter) => {
+  if (Filter === "") {
+    setData(Data);
+  } else {
+    // Convert the filter value to lowercase for case-insensitive comparison
+    const filterLower = Filter.toLowerCase();
+    // Filter the data based on the title including the lowercase filter value
+    const filtered = Datafetched.filter((el) => el.title.toLowerCase().includes(filterLower));
+    setData(filtered);
+  }
+}
+
+
+
     return(
         <>
 
 
 
 <section className="flex flex-col p-10 justify-center antialiased bg-gray-900 text-gray-200 min-h-screen">
- 
+ <div className="flex align-center">
  <div className="flex pt-20 pl-20  rounded-full bg-[#0d1829] px-2 w-full max-w-[600px]">
+  
 <button className="self-center flex p-1 cursor-pointer bg-[#0d1829]">
 {" "}
 <svg
@@ -55,6 +81,7 @@ xmlns="http://www.w3.org/2000/svg"
 </button>
 <input
 type="text"
+onChange={(e)=>Search(e.target.value)}
 className="w-full bg-[#0d1829] flex bg-transparent pl-2 text-[#cccccc] outline-0"
 placeholder="Search name movie or select options"
 />
@@ -86,9 +113,11 @@ xmlns="http://www.w3.org/2000/svg"
 </button>
 </div>
 
+</div>
 <div className="max-w-6xl mx-auto p-10  sm:px-6 h-full">
-{/* Blog post */}
-<Link href={`/blog/${1}`} className="max-w-sm  py-10 mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
+
+{Datafetched&&Datafetched.map((el)=>(
+ <Link href={`/blog/${1}`} className="max-w-sm  py-10 mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
 <a className="relative block group" href="#0">
  <div
    className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none"
@@ -97,8 +126,9 @@ xmlns="http://www.w3.org/2000/svg"
  <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
    <img
      className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
-     src="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
-     width={540}
+
+     src={`http://localhost:3002/uploads/${el.Image}`}
+          width={540}
      height={303}
      alt="Blog post"
    />
@@ -108,20 +138,13 @@ xmlns="http://www.w3.org/2000/svg"
  <header>
    <div className="mb-3">
      <ul className="flex flex-wrap text-xs font-medium -m-1">
-       <li className="m-1">
-         <a
-           className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
-           href="#0"
-         >
-           Product
-         </a>
-       </li>
+      
        <li className="m-1">
          <a
            className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out"
            href="#0"
          >
-           Engineering
+           {el.CategoryId.title}
          </a>
        </li>
      </ul>
@@ -131,19 +154,19 @@ xmlns="http://www.w3.org/2000/svg"
        className="hover:text-gray-100 transition duration-150 ease-in-out"
        href="#0"
      >
-       Designing a functional workflow at home.
-     </a>
+{el.title}     </a>
    </h3>
  </header>
  <p className="text-lg text-gray-400 flex-grow">
-   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-   dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+{el.content}
  </p>
  <footer className="flex items-center mt-4">
    <a href="#0">
      <img
        className="rounded-full flex-shrink-0 mr-4"
-       src="https://preview.cruip.com/open-pro/images/news-author-04.jpg"
+
+       src={`http://localhost:3002/uploads/${el.userId.Profile}`}
+
        width={40}
        height={40}
        alt="Author 04"
@@ -154,96 +177,24 @@ xmlns="http://www.w3.org/2000/svg"
        className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out"
        href="#0"
      >
-       Chris Solerieu
+       {el.userId.username}
      </a>
-     <span className="text-gray-700"> - </span>
-     <span className="text-gray-500">Jan 19, 2020</span>
+     <span className="text-gray-700"> {el.userId.email} </span>
    </div>
  </footer>
 </div>
-</Link>
-<Link href={`/blog/${2}`} className="max-w-sm py-10  mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 xl:gap-16 items-center">
-<a className="relative block group" href="#0">
- <div
-   className="absolute inset-0 bg-gray-800 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none"
-   aria-hidden="true"
- />
- <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-   <img
-     className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
-     src="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
-     width={540}
-     height={303}
-     alt="Blog post"
-   />
- </figure>
-</a>
-<div>
- <header>
-   <div className="mb-3">
-     <ul className="flex flex-wrap text-xs font-medium -m-1">
-       <li className="m-1">
-         <a
-           className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
-           href="#0"
-         >
-           Product
-         </a>
-       </li>
-       <li className="m-1">
-         <a
-           className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out"
-           href="#0"
-         >
-           Engineering
-         </a>
-       </li>
-     </ul>
-   </div>
-   <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
-     <a
-       className="hover:text-gray-100 transition duration-150 ease-in-out"
-       href="#0"
-     >
-       Designing a functional workflow at home.
-     </a>
-   </h3>
- </header>
- <p className="text-lg text-gray-400 flex-grow">
-   Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-   dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
- </p>
- <footer className="flex items-center mt-4">
-   <a href="#0">
-     <img
-       className="rounded-full flex-shrink-0 mr-4"
-       src="https://preview.cruip.com/open-pro/images/news-author-04.jpg"
-       width={40}
-       height={40}
-       alt="Author 04"
-     />
-   </a>
-   <div>
-     <a
-       className="font-medium text-gray-200 hover:text-gray-100 transition duration-150 ease-in-out"
-       href="#0"
-     >
-       Chris Solerieu
-     </a>
-     <span className="text-gray-700"> - </span>
-     <span className="text-gray-500">Jan 19, 2020</span>
-   </div>
- </footer>
-</div>
-</Link>
+</Link> 
+))}
+{Loading&&<Loader/>}
+{Datafetched.length==0&&<Empty/>   }
 </div>
 <>
 
 <div className="flex justify-center">
 {/* Previous Button */}
-<a
-href="#"
-className="flex items-center justify-center px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+<div
+onClick={()=>SetPage(Page-1)}
+className="flex items-center justify-center cursor-pointer px-4 h-10 me-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 >
 <svg
  className="w-3.5 h-3.5 me-2 rtl:rotate-180"
@@ -261,10 +212,11 @@ className="flex items-center justify-center px-4 h-10 me-3 text-base font-medium
  />
 </svg>
 Previous
-</a>
-<a
-href="#"
-className="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+</div>
+
+<div
+onClick={()=>SetPage(Page+1)}
+className="flex items-center justify-center px-4 h-10 cursor-pointer text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 >
 Next
 <svg
@@ -282,7 +234,7 @@ Next
    d="M1 5h12m0 0L9 1m4 4L9 9"
  />
 </svg>
-</a>
+</div>
 </div>
 </>
 

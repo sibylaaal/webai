@@ -27,7 +27,7 @@ export default function Header(){
           id="toggle_nav"
           className="hidden peer"
         />
-        <div className="relative z-20 w-full flex justify-between lg:w-max md:px-0">
+        <div className="relative z-20 right-0  flex justify-end lg:w-max md:px-0">
           <a
             href="#home"
             aria-label="logo"
@@ -49,12 +49,12 @@ export default function Header(){
               <div
                 aria-hidden="true"
                 id="line"
-                className="m-auto h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300"
+                className="m-auto h-0.5 w-5 rounded  bg-white dark:bg-gray-300 transition duration-300"
               />
               <div
                 aria-hidden="true"
                 id="line2"
-                className="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300"
+                className="m-auto mt-2 h-0.5 w-5 rounded bg-white dark:bg-gray-300 transition duration-300"
               />
             </label>
           </div>

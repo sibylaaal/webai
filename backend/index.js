@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
+const path = require('path');
 const cors = require('cors');
 const multer = require('multer');
 const User = require('./models/user');
@@ -36,7 +37,7 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.post('/register',upload.single('file'),async (req, res) => {
   try {
 
@@ -88,9 +89,29 @@ app.post('/login', async (req, res) => {
       res.status(500).json({ message: 'Error logging in' });
     }
   });
-  app.get("/blogs",async (req, res) => {
-    const blogs = await Post.find();
-    res.status(200).json(blogs);
+  app.get('/blogs', async (req, res) => {
+    // Extract query parameters
+    const page = parseInt(req.query.page) || 1; // default to page 1 if not provided
+    const pageSize = 5; // limit of 5 posts per page
+
+    try {
+        // Calculate skip value for pagination
+        const skip = (page - 1) * pageSize;
+
+        // Query database for paginated blog posts
+        const blogs = await Post.find()
+            .populate('CategoryId')
+            .populate('userId')
+            .skip(skip)
+            .limit(pageSize);
+
+        // Send the paginated blog posts as a response
+        res.status(200).json(blogs);
+    } catch (err) {
+        // Handle errors
+        console.error("Error fetching paginated blog posts:", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
 });
 app.post("/blogs",upload.single('file'), async (req, res) => {
 
